@@ -1,0 +1,149 @@
+.App {
+  margin: 0;
+  text-align: center;
+  height: 100vh;
+  overflow: auto;
+}
+
+.Footer {
+  position: fixed;
+  height: 30px;
+  width: 100vw;
+  background-color: #222;
+  bottom: 0;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 105px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+  transition: 0.5s;
+}
+
+.App.with-result .App-header {
+  height: 30px;
+}
+
+.App.with-result .App-title {
+  margin: 0;
+}
+
+.App.with-result .App-intro {
+  opacity: 0;
+  height: 0;
+  margin: 0;
+}
+
+.App.with-result img {
+  opacity: 0;
+  height: 0;
+  margin: 0;  
+}
+
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.App.with-result .code-editor-container {
+  height: calc(100% - 100px);
+  overflow: auto;
+}
+/*
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}*/
+
+.code-editor {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  align-content: center;
+  flex-direction: column;   
+}
+
+.code-editor .code-area {
+  background: #CCC;
+  width: calc(100vw - 40px);
+  margin: 10px;
+  padding: 10px 25px 10px 25px;
+  box-sizing: border-box;
+}
+
+.code-editor .code-area textarea {
+  width: calc(100%);
+  font-size: 23px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #335;
+}
+
+.code-editor button {
+  background: #EEE;
+  border: 0;
+  padding: 5px;
+  float: right;
+  font-size: 16px;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.code-editor button:hover {
+  background: #FFF;
+}
+
+.grammar-selector {
+  width: calc(100vw - 40px);
+  height: 50px;
+  margin: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  background: #333;
+  color: #DDD;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+
+}
+
+.grammar-selector select {
+  background: #222;
+  color: #EEE;
+  margin: 15px;
+  padding: 5px;
+}
+
+.result {
+  background: #CCC;
+  width: calc(100vw - 40px);
+  margin: 10px;
+  padding: 10px 25px 10px 25px;
+  box-sizing: border-box;  
+}
+
+.result .parse-result-line {
+  background: rgba(255,255,255,0.3);
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 5px;
+  font-size: 18px;
+  color: #335; 
+  text-align: left; 
+}
+
+.result .parse-result-line:hover{
+  background: rgba(255,255,255,0.7);
+  cursor: pointer;
+}
+
