@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { setCode, setGrammar, setParseLine } from './../actions';
-import { getParseResult, getGrammar, getCode } from './../selectors';
+import { getParseResult, getGrammar, getCode, getGrammarList } from './../selectors';
 import Actions from './../components/actions';
-import GrammarSelector from './../components/grammarSelector';
+import GrammarSelect from './../components/grammarSelect';
 import { walkGrammar } from './../services';
 import ParseResult from './../components/parseResult';
 
@@ -33,11 +33,14 @@ class CodeEditor extends Component {
     }
 
     render() {
-        const { parseResult } = this.props;
+        const { parseResult, grammar, grammarList } = this.props;
         const res = parseResult && parseResult.length > 0;
         return (
             <div className={`code-editor ${res && 'with-result'}`}>
-                <GrammarSelector handleGrammar={this.handleGrammar} ></GrammarSelector>
+                <GrammarSelect 
+                    handleGrammar={this.handleGrammar} 
+                    selectedGrammar={grammar}
+                    grammarList={grammarList}></GrammarSelect>
                 <div className="code-area">
                     <textarea  rows="4" ref={input => { this.CodeTxt = input; } } onChange={this.handleCodeChange} />
                     <Actions handleGenerate={this.handleGenerate} ></Actions>
@@ -56,11 +59,13 @@ CodeEditor.propTypes = {
     setGrammar: PropTypes.func.isRequired,
     setParseLine: PropTypes.func.isRequired,
     parseResult: PropTypes.array,
+    grammarList: PropTypes.arrayOf(PropTypes.string),
 };
 const mapStateToProps = state => ({
     textCode: getCode(state),
     parseResult: getParseResult(state),
     grammar: getGrammar(state),
+    grammarList: getGrammarList(state),
 });
 
 export default connect(mapStateToProps, 

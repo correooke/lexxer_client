@@ -2,7 +2,7 @@ import toPairs from 'lodash.topairs';
 import isFunction from 'lodash.isfunction';
 
 export const walkGrammar = (grammar, textCode, parseOut) => {
-
+    debugger;
     var antlr4 = require('antlr4/index');
     var MyLexer = require(`./../grammars/${grammar}/${grammar}Lexer`);
     var MyParser = require(`./../grammars/${grammar}/${grammar}Parser`);
@@ -38,6 +38,7 @@ const getWrappedListener = (OriginalListener, grammar, parseOut) => {
                 ListenerExt.prototype[name] = (arg) => {
                     const ruleName = name.replace('exit', '');
                     parseOut(ruleName, arg);
+                    debugger;
                     console.log("Parsed: " + arg.getText());
             }
         }

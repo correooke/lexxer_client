@@ -1,4 +1,4 @@
-// Generated from c:\learning\lexter\rules\src\Hello\Hello.g4 by ANTLR 4.7
+// Generated from c:\learning\lexter\rules\src\grammars\Hello\Hello.g4 by ANTLR 4.7
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
