@@ -1,4 +1,4 @@
-import { observable, action, when } from 'mobx';
+import { observable, action } from 'mobx';
 
 /*
 const appState = observable({
@@ -24,23 +24,7 @@ appState.setGrammar = grammar => {
 }
 */
 // @computed : son pure actions, calculos en base a los datos de observable
-
-
 const appState = new class AppState {
-
-    constructor() {
-        when(
-            () => {
-                return this.parseResult !== [];
-            },
-            () => {
-                debugger;
-                console.log("pasoooooooooooooooooo!");
-                this.hasParseResult = false;
-            }
-        );        
-    }
-    
     @observable grammar = null;
     @observable textCode = '';
     @observable parseResult = [];
@@ -50,6 +34,7 @@ const appState = new class AppState {
     @action("agrego una línea de resultado") 
     setParseLine = line => {
         this.parseResult = [...appState.parseResult, line];
+        this.hasParseResult = true;
     }
 
     @action("escribo código")
@@ -61,9 +46,7 @@ const appState = new class AppState {
     setGrammar = grammar => {
         this.grammar = grammar;
         this.parseResult = [];
+        this.hasParseResult = false;
     }
 }
-
-
-
 export default appState;
