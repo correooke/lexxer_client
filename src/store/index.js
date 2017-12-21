@@ -23,7 +23,7 @@ appState.setGrammar = grammar => {
     appState.parseResult = [];
 }
 */
-
+// @computed : son pure actions, calculos en base a los datos de observable
 const appState = new class AppState {
     @observable grammar = null;
     @observable textCode = '';
@@ -31,18 +31,21 @@ const appState = new class AppState {
     @observable grammarList = ['Hello', 'ETMRules', 'arithmetic', 'other'];
     @observable hasParseResult = false;
 
-    @action setParseLine = line => {
-        appState.parseResult = [...appState.parseResult, line];
-        appState.hasParseResult = true;
+    @action("agrego una línea de resultado") 
+    setParseLine = line => {
+        this.parseResult = [...appState.parseResult, line];
+        this.hasParseResult = true;
     }
 
-    @action setCode = code => {
-        appState.textCode = code;
+    @action("escribo código")
+    setCode = code => {
+        this.textCode = code;
     }
 
-    @action setGrammar = grammar => {
-        appState.grammar = grammar;
-        appState.parseResult = [];
+    @action("establezco la gramática a usar") 
+    setGrammar = grammar => {
+        this.grammar = grammar;
+        this.parseResult = [];
     }
 }
 export default appState;
