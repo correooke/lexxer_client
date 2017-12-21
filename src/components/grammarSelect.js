@@ -24,7 +24,7 @@ const GrammarSelect = ( { handleGrammar, selectedGrammar, grammarList, innnerRef
 GrammarSelect.propTypes = {
     handleGrammar: PropTypes.func.isRequired,
     selectedGrammar: PropTypes.string,
-    grammarList: PropTypes.arrayOf(PropTypes.string),
+    grammarList: PropTypes.object,
     innnerRef: PropTypes.func,
 };
 

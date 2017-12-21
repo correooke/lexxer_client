@@ -7,7 +7,7 @@ import ParseResult from './../components/parseResult';
 import Actions from './../components/actions';
 
 
-@observer 
+@observer(["store"]) 
 class CodeEditor extends Component {
 
     handleGenerate = () => {
@@ -72,7 +72,7 @@ class CodeEditor extends Component {
         );
     }
 }
-
+/*
 CodeEditor.propTypes = {
     store: PropTypes.shape({
         setCode: PropTypes.func.isRequired,
@@ -82,7 +82,7 @@ CodeEditor.propTypes = {
         grammarList: PropTypes.object,        
     }).isRequired,
 
-};
+};*/
 
 CodeEditor.defaultValues = {
     store: {

@@ -46,6 +46,7 @@ const appState = new class AppState {
     setGrammar = grammar => {
         this.grammar = grammar;
         this.parseResult = [];
+        this.hasParseResult = false;
     }
 }
 export default appState;

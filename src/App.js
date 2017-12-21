@@ -2,17 +2,16 @@ import React, { Component } from 'react';
 import logo from './logo.gif';
 import './App.css';
 import CodeEditor from './containers/CodeEditor';
-import appState from './store';
+
 import { PropTypes } from 'prop-types';
 import { observer } from 'mobx-react';
 import DevTools from 'mobx-react-devtools';
 
-@observer
+@observer(["store"])
 class App extends Component {
 
   render() {
-
-    const { hasParseResult } = appState;
+    const { hasParseResult } = this.props.store;
     return (
       <div className={`App ${hasParseResult && 'with-result'}`}>
         <DevTools></DevTools>
@@ -24,7 +23,7 @@ class App extends Component {
           Aplicación generadora basada en gramáticas ANTLR4
         </p>
         <div className="code-editor-container">
-          <CodeEditor store={appState} ></CodeEditor>
+          <CodeEditor></CodeEditor>
         </div>
         
         <div className="Footer">
@@ -33,9 +32,9 @@ class App extends Component {
     );
   }
 }
-
+/*
 App.propTypes = {
   hasParseResult: PropTypes.bool,
-}
+*/
 
 export default App;
