@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import GrammarSelect from './../components/grammarSelect';
 import { walkGrammar } from './../services';
 import ParseResult from './../components/parseResult';
+import { observer } from 'mobx-react';
 
+@observer 
 class CodeEditor extends Component {
 
     handleGenerate = () => {
