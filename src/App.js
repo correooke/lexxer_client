@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.gif';
 import './App.css';
 import CodeEditor from './containers/CodeEditor';
+import appState from './store';
 import { PropTypes } from 'prop-types';
 
 class App extends Component {
@@ -18,7 +19,7 @@ class App extends Component {
           Aplicación generadora basada en gramáticas ANTLR4
         </p>
         <div className="code-editor-container">
-          <CodeEditor></CodeEditor>
+          <CodeEditor store={appState} ></CodeEditor>
         </div>
         
         <div className="Footer">

@@ -11,7 +11,7 @@ import Actions from './../components/actions';
 class CodeEditor extends Component {
 
     handleGenerate = () => {
-        const { grammar, textCode } = this.props;
+        const { grammar, textCode } = this.props.store;
         
         if (textCode && grammar) {
             walkGrammar(grammar, textCode, this.parseOutEvent);
@@ -19,13 +19,17 @@ class CodeEditor extends Component {
     }
 
     parseOutEvent = (ruleName, ctx) => {
+        const { setParseLine } = this.props.store;
+
         const line = `rule: ${ruleName} valor:${ctx.getText()}`;
         console.log(line);
-        this.props.setParseLine(line)
+        setParseLine(line)
     }
 
     handleCodeChange = (event) => {
-        this.props.setCode(event.target.value);
+        const { setCode } = this.props.store;
+        
+        setCode(event.target.value);
     }
 
     componentDidMount() {
@@ -34,13 +38,17 @@ class CodeEditor extends Component {
     }
     
     handleGrammar = value => {
-        this.props.setGrammar(value);
+        const { setGrammar } = this.props.store;
+
+        setGrammar(value);
+        
         if (this.CodeTxt)
             this.CodeTxt.focus();
     }
     
     render() {
-        const { parseResult, grammar, grammarList } = this.props;
+        const { parseResult, grammar, grammarList } = this.props.store;
+        
         const res = parseResult && parseResult.length > 0;
         return (
             <div className={`code-editor ${res && 'with-result'}`}>
