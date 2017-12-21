@@ -2,12 +2,9 @@ import React, { Component } from 'react';
 import logo from './logo.gif';
 import './App.css';
 import CodeEditor from './containers/CodeEditor';
-import { connect } from 'react-redux';
-import { getHasParseResult } from './selectors';
 import { PropTypes } from 'prop-types';
 
 class App extends Component {
-
 
   render() {
     const { hasParseResult } = this.props;
@@ -35,8 +32,4 @@ App.propTypes = {
   hasParseResult: PropTypes.bool,
 }
 
-const mapStateToProps = state => ({
-  hasParseResult: getHasParseResult(state),
-});
-
-export default connect(mapStateToProps)(App);
+export default App;

@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { setCode, setGrammar, setParseLine } from './../actions';
-import { getParseResult, getGrammar, getCode, getGrammarList } from './../selectors';
-import Actions from './../components/actions';
 import GrammarSelect from './../components/grammarSelect';
 import { walkGrammar } from './../services';
 import ParseResult from './../components/parseResult';
@@ -71,12 +67,5 @@ CodeEditor.propTypes = {
     parseResult: PropTypes.array,
     grammarList: PropTypes.arrayOf(PropTypes.string),
 };
-const mapStateToProps = state => ({
-    textCode: getCode(state),
-    parseResult: getParseResult(state),
-    grammar: getGrammar(state),
-    grammarList: getGrammarList(state),
-});
 
-export default connect(mapStateToProps, 
-                { setCode, setGrammar, setParseLine })(CodeEditor);
+export default CodeEditor;
