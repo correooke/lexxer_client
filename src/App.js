@@ -4,11 +4,14 @@ import './App.css';
 import CodeEditor from './containers/CodeEditor';
 import appState from './store';
 import { PropTypes } from 'prop-types';
+import { observer } from 'mobx-react';
 
+@observer
 class App extends Component {
 
   render() {
-    const { hasParseResult } = this.props;
+
+    const { hasParseResult } = appState.hasParseResult;
     return (
       <div className={`App ${hasParseResult && 'with-result'}`}>
         <header className="App-header">

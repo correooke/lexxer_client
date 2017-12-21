@@ -47,6 +47,7 @@ class CodeEditor extends Component {
     }
     
     render() {
+        debugger;
         const { parseResult, grammar, grammarList } = this.props.store;
         
         const res = parseResult && parseResult.length > 0;
@@ -73,11 +74,21 @@ class CodeEditor extends Component {
 }
 
 CodeEditor.propTypes = {
-    setCode: PropTypes.func.isRequired,
-    setGrammar: PropTypes.func.isRequired,
-    setParseLine: PropTypes.func.isRequired,
-    parseResult: PropTypes.array,
-    grammarList: PropTypes.arrayOf(PropTypes.string),
+    store: PropTypes.shape({
+        setCode: PropTypes.func.isRequired,
+        setGrammar: PropTypes.func.isRequired,
+        setParseLine: PropTypes.func.isRequired,
+        parseResult: PropTypes.object,
+        grammarList: PropTypes.object,        
+    }).isRequired,
+
 };
+
+CodeEditor.defaultValues = {
+    store: {
+        parseResult: [],
+        grammarList: [],
+    }
+}
 
 export default CodeEditor;
