@@ -28,16 +28,24 @@ class CodeEditor extends Component {
         this.props.setCode(event.target.value);
     }
 
+    componentDidMount() {
+        if (this.grammarSelect)
+            this.grammarSelect.focus();
+    }
+    
     handleGrammar = value => {
         this.props.setGrammar(value);
+        if (this.CodeTxt)
+            this.CodeTxt.focus();
     }
-
+    
     render() {
         const { parseResult, grammar, grammarList } = this.props;
         const res = parseResult && parseResult.length > 0;
         return (
             <div className={`code-editor ${res && 'with-result'}`}>
                 <GrammarSelect 
+                    innnerRef={gs => { this.grammarSelect = gs; }}
                     handleGrammar={this.handleGrammar} 
                     selectedGrammar={grammar}
                     grammarList={grammarList}></GrammarSelect>
@@ -47,7 +55,9 @@ class CodeEditor extends Component {
                 </div>
                 { 
                     res && 
-                    <ParseResult result={parseResult}></ParseResult>
+                    <ParseResult result={parseResult}>
+                        <ParseResult.Header>Resultados de compilación</ParseResult.Header>
+                    </ParseResult>
                 }
             </div>
         );

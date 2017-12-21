@@ -9,6 +9,8 @@ const Actions = ({ handleGenerate }) => {
     );
 };
 
+Actions.displayName = 'PowerActions';
+
 Actions.propTypes = {
     handleGenerate: PropTypes.func.isRequired,
 };
