@@ -1,2 +1,2 @@
 
-export const grammars = ['Hello', 'arithmetic', 'ETMRules', 'Otra'];
+export const grammars = ['Hello', 'arithmetic', 'ETMRules', 'SQLite', 'Otra'];

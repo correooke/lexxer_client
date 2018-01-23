@@ -28,7 +28,7 @@ const appState = new class AppState {
     @observable grammar = null;
     @observable textCode = '';
     @observable parseResult = [];
-    @observable grammarList = ['Hello', 'ETMRules', 'arithmetic', 'other'];
+    @observable grammarList = ['Hello', 'ETMRules', 'arithmetic', 'SQLite', 'other'];
     @observable hasParseResult = false;
 
     @action("agrego una línea de resultado") 
