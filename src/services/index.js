@@ -1,5 +1,6 @@
 import toPairs from 'lodash.topairs';
 import isFunction from 'lodash.isfunction';
+import { URL, PORT } from '../constants/index';
 
 export const walkGrammar = (grammar, textCode, parseOut) => {
     debugger;
@@ -17,7 +18,7 @@ export const walkGrammar = (grammar, textCode, parseOut) => {
 
     const ruleName = getFirstRuleName(MyParser[`${grammar}Parser`]);
 
-    var tree = parser[ruleName](); // <==== DESPEGAR DE ESTO
+    var tree = parser[ruleName](); 
 
     var listen = getWrappedListener(MyListener, grammar, parseOut);
     
@@ -57,3 +58,5 @@ const getFirstRuleName = parser => {
 
     return name.replace('RULE_', '');
 }
+
+export const buildUrl = path => `http://${URL}:${PORT}/${path}`;

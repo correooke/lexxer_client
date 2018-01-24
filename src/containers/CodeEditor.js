@@ -10,6 +10,15 @@ import Actions from './../components/actions';
 @observer(["store"]) 
 class CodeEditor extends Component {
 
+    componentDidMount() {
+        const { getGrammars } = this.props.store;
+
+        getGrammars();
+
+        if (this.grammarSelect)
+            this.grammarSelect.focus();
+    }
+
     handleGenerate = () => {
         const { grammar, textCode } = this.props.store;
         
@@ -32,10 +41,7 @@ class CodeEditor extends Component {
         setCode(event.target.value);
     }
 
-    componentDidMount() {
-        if (this.grammarSelect)
-            this.grammarSelect.focus();
-    }
+
     
     handleGrammar = value => {
         const { setGrammar } = this.props.store;
@@ -47,7 +53,6 @@ class CodeEditor extends Component {
     }
     
     render() {
-        debugger;
         const { parseResult, grammar, grammarList } = this.props.store;
         
         const res = parseResult && parseResult.length > 0;

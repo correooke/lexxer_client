@@ -1,4 +1,5 @@
 import { observable, action } from 'mobx';
+import { buildUrl } from '../services/index';
 
 /*
 const appState = observable({
@@ -28,8 +29,20 @@ const appState = new class AppState {
     @observable grammar = null;
     @observable textCode = '';
     @observable parseResult = [];
-    @observable grammarList = ['Hello', 'ETMRules', 'arithmetic', 'SQLite', 'other'];
+    @observable grammarList = [];
     @observable hasParseResult = false;
+
+    @action("obtengo las gramáticas del servidor")
+        getGrammars = () => {
+            debugger;
+            fetch(buildUrl("grammars"))
+                .then(r => r.json())
+                .then(grammars => { 
+                        debugger;
+                        this.grammarList = grammars;
+                    }
+                );
+    }
 
     @action("agrego una línea de resultado") 
     setParseLine = line => {
