@@ -1,2 +1,2 @@
-export const URL = 'localhost'
-export const PORT = '3001';
+export const URL = `${window.location.protocol}//${window.location.hostname}`;
+export const PORT = process.env.NODE_ENV !== 'production' ? '5000' : '80';

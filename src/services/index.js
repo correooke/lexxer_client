@@ -59,4 +59,10 @@ const getFirstRuleName = parser => {
     return name.replace('RULE_', '');
 }
 
-export const buildUrl = path => `http://${URL}:${PORT}/${path}`;
+export const buildUrl = path => {
+    const finalUrl = `${URL}:${PORT}/${path}`;
+    console.log(process.env.NODE_ENV);
+    console.log(finalUrl);
+    debugger;
+    return finalUrl;
+}
